@@ -1,0 +1,8 @@
+name: Firework
+main: io.github.aXSSor.main
+version: 1.0.0
+author: aXSSor
+
+commands:
+    fw:
+        description: Launches the Firework!
