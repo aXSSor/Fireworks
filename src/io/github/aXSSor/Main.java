@@ -46,6 +46,7 @@ public class Main extends JavaPlugin implements Listener{
     builder.withColor(Color.FUCHSIA);
     builder.withColor(Color.PURPLE);
     builder.withColor(Color.WHITE);
+    builder.withColor(Color.BLACK);
     builder.with(FireworkEffect.Type.BALL);
     fwmeta.addEffects(new FireworkEffect[] { builder.build() });
     fwmeta.setPower(1);
