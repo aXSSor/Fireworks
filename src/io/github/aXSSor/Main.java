@@ -17,19 +17,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Main extends JavaPlugin implements Listener{
   
 	public void onEnable() {
-    PluginManager pm = getServer().getPluginManager();
-    pm.registerEvents(new Main(), this);
-    System.out.println("> Fireworks plugin - Created by aXSSor - Running on" + Bukkit.getBukkitVersion());
-  }
+		PluginManager pm = getServer().getPluginManager();
+		pm.registerEvents(new Main(), this);
+		System.out.println(ChatColor.GREEN + "> Fireworks plugin - Created by aXSSor - Running on " + Bukkit.getBukkitVersion());
+	}
+	public void onDisable(){
+		System.out.println(ChatColor.RED + "> Fireworks Plugin DISABLED");
+	}
 
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
     Player player = (Player)sender;
 
 
     if (cmd.getName().equalsIgnoreCase("fw")) {
-      fireworkuser(player);
       if (player.hasPermission("fw.user"))
-        player.sendMessage("§aFireworks!");
+    	  fireworkuser(player);
       else {
         player.sendMessage(ChatColor.RED + " You cannot access this feature! If you believe this is an error, Type /report");
       }
@@ -38,6 +40,7 @@ public class Main extends JavaPlugin implements Listener{
   }
 
   public void fireworkuser(Player player) {
+	player.sendMessage(ChatColor.GREEN + "Fireworks!");
     Firework fw = (Firework)player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
     FireworkMeta fwmeta = fw.getFireworkMeta();
     FireworkEffect.Builder builder = FireworkEffect.builder();
@@ -46,6 +49,8 @@ public class Main extends JavaPlugin implements Listener{
     builder.withColor(Color.FUCHSIA);
     builder.withColor(Color.PURPLE);
     builder.withColor(Color.WHITE);
+    builder.withColor(Color.AQUA);
+    builder.withColor(Color.RED);
     builder.withColor(Color.BLACK);
     builder.with(FireworkEffect.Type.BALL);
     fwmeta.addEffects(new FireworkEffect[] { builder.build() });
